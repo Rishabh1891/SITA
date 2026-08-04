@@ -61,13 +61,27 @@
         #left-panel, #right-panel { transition: transform 420ms ease, opacity 320ms ease; }
         body.earth-focus #left-panel { transform: translateX(calc(-100% - 1rem)); opacity: 0; pointer-events: none; }
         body.earth-focus #right-panel { transform: translateX(calc(100% + 1rem)); opacity: 0; pointer-events: none; }
-        @media (max-width: 1180px) and (orientation: landscape) {
+        @media (max-width: 1180px) {
             header { padding-left: 0.75rem; padding-right: 0.75rem; }
             header .hidden.lg\:flex { display: none !important; }
-            #left-panel { width: 31vw; margin: 0.75rem; }
-            #right-panel { width: 35vw; margin: 0.75rem 0.75rem 0.75rem 0; }
+            #left-panel, #right-panel {
+                position: absolute;
+                top: 12px;
+                bottom: 12px;
+                margin: 0;
+                min-width: 0;
+                flex: none;
+            }
+            #left-panel { left: 12px; width: min(31vw, 320px) !important; }
+            #right-panel { right: 12px; width: min(35vw, 360px) !important; }
             #left-panel .p-4, #right-panel .p-4 { padding: 0.75rem; }
             #left-panel input { padding: 0.4rem; }
+        }
+        @media (max-width: 900px) {
+            #left-panel { width: min(31vw, 250px) !important; }
+            #right-panel { width: min(35vw, 285px) !important; }
+            #right-panel table { font-size: 10px; }
+            #left-panel .grid { gap: 0.35rem; }
         }
     </style>
 </head>
